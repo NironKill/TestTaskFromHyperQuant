@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+    <header class="d-flex align-items-center justify-content-between p-3 border-bottom">
+        <button class="btn btn-primary" id="modal-btn" data-bs-toggle="modal" data-bs-target="#tableModal">Get currency data</button>
+    </header>
+    <main class="container py-4">
+        <div id="mainTableContainer"></div>
+    </main>
+
+    <div class="modal fade" id="tableModal" tabindex="-1" aria-labelledby="tableModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tableModalLabel">Select the options you need</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="tableForm">
+                        <div class="mb-3">
+                            <label for="operationType" class="form-label">Operation selection</label>
+                            <select class="form-select" id="operationType" required>
+                                <option value="trades">Get Trades</option>
+                                <option value="candles">Get Candles</option>
+                                <option value="ticker">Get Ticker</option>
+                            </select>
+                        </div>
+
+                        <div id="dynamicFields"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="tableForm" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
