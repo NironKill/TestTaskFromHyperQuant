@@ -1,7 +1,7 @@
 ﻿namespace CryptoManager.Infrastructure.Options
 {
-    internal class BinanceOption
+    public class BinanceOption
     {
-        internal static readonly string Url = "BINANCE_URL";
+        public static readonly string Url = "BINANCE_URL";
     }
 }

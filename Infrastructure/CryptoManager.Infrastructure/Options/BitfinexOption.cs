@@ -1,8 +1,8 @@
 ﻿namespace CryptoManager.Infrastructure.Options
 {
-    internal class BitfinexOption
+    public class BitfinexOption
     {
-        internal static readonly string Url = "BITFINEX_URL";
-        internal static readonly string WSUrl = "BITFINEX_WSURL";
+        public static readonly string Url = "BITFINEX_URL";
+        public static readonly string WSUrl = "BITFINEX_WSURL";
     }
 }
