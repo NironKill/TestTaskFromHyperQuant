@@ -1,9 +1,8 @@
 ﻿using CryptoManager.Application.Common.Constants;
 using CryptoManager.Application.Services.Interfaces;
 using CryptoManager.Infrastructure.Options;
-using CryptoManager.Infrastructure.Responses;
+using CryptoManager.Infrastructure.Responses.Bitfinex;
 using CryptoManager.Infrastructure.Services.Bitfinex.Interfaces;
-using System.Diagnostics.Metrics;
 using System.Text;
 using System.Text.Json;
 

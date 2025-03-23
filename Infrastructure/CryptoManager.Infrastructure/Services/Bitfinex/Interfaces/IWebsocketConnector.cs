@@ -1,4 +1,5 @@
-﻿using CryptoManager.Infrastructure.Responses;
+﻿using CryptoManager.Infrastructure.Responses.Bitfinex;
+using System.Diagnostics;
 
 namespace CryptoManager.Infrastructure.Services.Bitfinex.Interfaces
 {

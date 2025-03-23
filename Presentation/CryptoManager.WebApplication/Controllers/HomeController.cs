@@ -1,4 +1,4 @@
-using CryptoManager.Infrastructure.Responses;
+using CryptoManager.Infrastructure.Responses.Bitfinex;
 using CryptoManager.Infrastructure.Services.Bitfinex.Interfaces;
 using CryptoManager.WebApplication.Models;
 using Microsoft.AspNetCore.Mvc;

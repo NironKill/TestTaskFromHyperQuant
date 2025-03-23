@@ -1,4 +1,4 @@
-﻿using CryptoManager.Infrastructure.Responses;
+﻿using CryptoManager.Infrastructure.Responses.Bitfinex;
 using CryptoManager.Infrastructure.Services.Bitfinex.Interfaces;
 using CryptoManager.WebApplication.Models;
 using CryptoManager.WebApplication.Requests;
@@ -12,6 +12,12 @@ namespace CryptoManager.WebApplication.Controllers
         private readonly IRestConnector _restConnector;
 
         public RestController(IRestConnector restConnector) => _restConnector = restConnector;
+
+        [HttpGet("Manage")]
+        public IActionResult Manage()
+        {
+            return View();
+        }
 
         [HttpPost("TickerTableGeneration")]
         public async Task<IActionResult> TickerTableGeneration([FromBody] TickerRequest request)

@@ -7,7 +7,10 @@ namespace CryptoManager.WebApplication.Controllers
     public class WebsocketController : Controller
     {
         private readonly IWebsocketConnector _websocketConnector;
-
-        public WebsocketController(IWebsocketConnector websocketConnector) => _websocketConnector = websocketConnector;
+     
+        public WebsocketController(IWebsocketConnector websocketConnector)
+        {
+            _websocketConnector = websocketConnector;
+        }                             
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace CryptoManager.Infrastructure.Responses
+﻿namespace CryptoManager.Infrastructure.Responses.Bitfinex
 {
     public class TickerResponce
     {

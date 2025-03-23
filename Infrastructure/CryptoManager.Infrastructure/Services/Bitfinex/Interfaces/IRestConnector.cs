@@ -1,4 +1,4 @@
-﻿using CryptoManager.Infrastructure.Responses;
+﻿using CryptoManager.Infrastructure.Responses.Bitfinex;
 
 namespace CryptoManager.Infrastructure.Services.Bitfinex.Interfaces
 {
