@@ -1,3 +1,4 @@
+using CryptoManager.Infrastructure.Hubs;
 using CryptoManager.WebApplication.Configurations;
 using Serilog;
 
@@ -12,6 +13,8 @@ builder.Services.AddSerilog(config =>
 builder.Services.AddHttpClient();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSignalR();
 
 builder.ConfigureService();
 
@@ -34,5 +37,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
 .WithStaticAssets();
+
+app.MapHub<TradeHub>("/tradeHub");
 
 app.Run();

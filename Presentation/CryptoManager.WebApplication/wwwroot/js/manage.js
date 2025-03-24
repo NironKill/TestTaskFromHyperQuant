@@ -275,7 +275,6 @@
             success: function (response) {
                 let tableHtml = generateTable(response.data, operation);
                 $("#mainTableContainer").html(tableHtml);
-                $("#tableModal").modal("hide");
             },
             error: function (xhr, status, error) {
                 alert("Error fetching data: " + xhr.responseText);
