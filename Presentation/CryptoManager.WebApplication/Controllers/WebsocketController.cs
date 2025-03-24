@@ -9,11 +9,8 @@ namespace CryptoManager.WebApplication.Controllers
     {
         private readonly IWebsocketConnector _websocketConnector;
 
-        public WebsocketController(IWebsocketConnector websocketConnector)
-        {
-            _websocketConnector = websocketConnector;
-        }
-     
+        public WebsocketController(IWebsocketConnector websocketConnector) => _websocketConnector = websocketConnector;
+        
         [HttpPost("SubscribeTrades")]
         public async Task<IActionResult> SubscribeTrades([FromBody] TradesRequest request)
         {

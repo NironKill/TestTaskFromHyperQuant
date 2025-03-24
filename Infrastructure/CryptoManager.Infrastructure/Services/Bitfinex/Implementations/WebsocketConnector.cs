@@ -47,13 +47,14 @@ namespace CryptoManager.Infrastructure.Services.Bitfinex.Implementations
 
         public void SubscribeCandles(string pair, string period, DateTimeOffset? from = null, DateTimeOffset? to = null, long? count = 0)
         {
-            if (!_subCandles.ContainsKey(pair))
+            string result = new StringBuilder($"t{pair}").ToString();
+            if (!_subCandles.Keys.Any(x => x.EndsWith(result)))
             {
                 var subscribeMessage = new
                 {
                     @event = "subscribe",
                     channel = "candles",
-                    key = $"trade:{period}:t{pair}"
+                    key = $"trade:{period}:{result}"
                 };
 
                 SendMessage(subscribeMessage);
@@ -61,13 +62,14 @@ namespace CryptoManager.Infrastructure.Services.Bitfinex.Implementations
         }
         public void SubscribeTrades(string pair, int maxCount = 100)
         {
-            if (!_subTrades.ContainsKey(pair))
+            string result = new StringBuilder($"t{pair}").ToString();
+            if (!_subTrades.ContainsKey(result))
             {
                 var subscribeMessage = new
                 {
                     @event = "subscribe",
                     channel = "trades",
-                    symbol = $"t{pair}"
+                    symbol = $"{result}"
                 };
 
                 SendMessage(subscribeMessage);
@@ -75,30 +77,32 @@ namespace CryptoManager.Infrastructure.Services.Bitfinex.Implementations
         }
         public void UnsubscribeCandles(string pair)
         {
-            if (_subCandles.ContainsKey(pair))
+            string result = new StringBuilder(pair).Insert(pair.LastIndexOf(":") + 1, "t").ToString();
+            if (_subCandles.ContainsKey(result))
             {
                 var unsubscribeMessage = new
                 {
                     @event = "unsubscribe",
-                    chanId = _subCandles[pair]
+                    chanId = _subCandles[result]
                 };
 
                 SendMessage(unsubscribeMessage);
-                _subCandles.Remove(pair);
+                _subCandles.Remove(result);
             }
         }
         public void UnsubscribeTrades(string pair)
         {
-            if (_subTrades.ContainsKey(pair))
+            string result = new StringBuilder($"t{pair}").ToString();
+            if (_subTrades.ContainsKey(result))
             {
                 var unsubscribeMessage = new
                 {
                     @event = "unsubscribe",
-                    chanId = _subTrades[pair]
+                    chanId = _subTrades[result]
                 };
 
                 SendMessage(unsubscribeMessage);
-                _subTrades.Remove(pair);
+                _subTrades.Remove(result);
             }
         }
 
@@ -119,7 +123,7 @@ namespace CryptoManager.Infrastructure.Services.Bitfinex.Implementations
 
                         if (result.EndOfMessage)
                         {
-                            var fullMessage = messageBuilder.ToString();
+                            string fullMessage = messageBuilder.ToString();
                             _logger.LogInformation($"Message received: {fullMessage}");
                             ProcessMessage(fullMessage);
                             messageBuilder.Clear();
